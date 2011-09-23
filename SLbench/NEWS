@@ -1,0 +1,21 @@
+***********************
+* "SLbench" R package *
+***********************
+
+AUTHOR: J. P. Olmsted (jpolmsted@gmail.com)
+CURRENT VERSION: 0.2-0 (2011-09-23)
+SITE: 
+
+Version 0.2-0
+-------------
+
+        * No backwards compatibility with version 0.1-0.
+
+        * Added new tests based on statistical estimation 
+          of strategic games, generic statistical methods 
+          from the MASS package, and Bayesian MCMC ideal
+          point estimation.
+
+        * Removed poorly designed tests and unnecessary 
+          code.
+
