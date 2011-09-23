@@ -1,14 +1,13 @@
 import(wnominate,
-       foreach,
-       mvtnorm,
+       pscl,
        SuppDists,
-       Matrix
+       MASS,
+       games
        )
 
-export(testStandard,
-       testRNG,
-       testOptim,
-       testMatrix,
-       testIPE,
-       testRW
+export(testIPE1,
+       testIPE2,
+       testStandard,
+       testSESG,
+       testMASS
        )
