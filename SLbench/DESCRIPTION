@@ -1,18 +1,18 @@
 Package: SLbench
 Type: Package
-Title: Collection of Useful Operations for Benchmarking the Starlab
-Version: 0.1-0
-Date: 2010-08-20
+Title: Collection of Useful Operations for Benchmarking Speeds
+Version: 0.2-0
+Date: 2011-09-23
 Author: Jonathan Paul Olmsted <jpolmsted@gmail.com>
 Maintainer: Jonathan Paul Olmsted <jpolmsted@gmail.com>
-Description: This package is a collection of functions that were used
- by the author to conduct benchmarking of the computing resources
- available to the Political Science Department at the University of
- Rochester. It covers an array of tests and is meant to be used to time 
- both single-process  computations and multi-process (distributed) 
- computations.
-License: GPL-2
+Description: This package is a collection of functions that were used 
+             or inspired by the author's benchmarking of computing resources
+             available to the Political Science Department at the University 
+             of Rochester. It provides various tests that are to be times 
+             which encompass matrix operations, random number generation, 
+             and maximum likelihood estimation.
+License: >= GPL-2
 LazyLoad: no
-Depends: R (>= 2.9.2), wnominate (>= 0.94), pscl (>= 0.59), 
-	 foreach (>= 1.3.0), mvtnorm (>= 0.9-92), 
-	 SuppDists (>= 1.1-8), Matrix (>= 0.999375-43)
+Depends: R (>= 2.9.2), wnominate (>= 0.94), pscl (>= 0.59), SuppDists (>= 1.1.8),
+         MASS (>=7.3-14), games (>= 1.0-2)
+	 
