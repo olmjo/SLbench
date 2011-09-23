@@ -1,0 +1,25 @@
+* install options are ' --no-html'
+
+* installing *source* package ‘SLbench’ ...
+** R
+** data
+** inst
+** help
+*** installing help indices
+** building package indices ...
+** testing if installed package can be loaded
+Classes and Methods for R developed in the
+Political Science Computational Laboratory
+Department of Political Science
+Stanford University
+Simon Jackman
+hurdle and zeroinfl functions by Achim Zeileis
+
+## W-NOMINATE Ideal Point Package 
+## Copyright 2006 - 2010 
+## Keith Poole, Jeffrey Lewis, James Lo, and Royce Carroll
+## Support provided by the U.S. National Science Foundation
+## NSF Grant SES-0611974
+
+
+* DONE (SLbench)

@@ -1,0 +1,14 @@
+import(wnominate,
+       foreach,
+       mvtnorm,
+       SuppDists,
+       Matrix
+       )
+
+export(testStandard,
+       testRNG,
+       testOptim,
+       testMatrix,
+       testIPE,
+       testRW
+       )
