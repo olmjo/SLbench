@@ -5,7 +5,7 @@
 ###
 ### DATE: Fri Sep 23 17:18:22 2011
 ###
-### LICENSE: See Below
+### LICENSE: See R Package Details
 ###
 ### DESCRIPTION: This R script file provides the testMASS() function
 ### which uses example code without modification from the "MASS" R
