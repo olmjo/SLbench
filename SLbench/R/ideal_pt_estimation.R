@@ -22,22 +22,23 @@ testIPE1 <- function()
     foo <- wnominate(sen90,
 		     polarity=c(2,5),
 		     trials=5,
-                     verbose = TRUE
+                     verbose = FALSE
 		     )
 					# Use the PooleRosenthal
 					# approach to IPE.
   }
 
-testIPE2 <- function{
-  require(wnominate)
-  require(pscl)
-  data(sen90, package="wnominate")
+testIPE2 <- function()
+  {
+    require(wnominate)
+    require(pscl)
+    data(sen90, package="wnominate")
 					# Load the roll call data used
 					# in this example.
-  foo <- ideal(object = sen90,
-               store.item = TRUE,
-               verbose = TRUE
-               )
-}
+    foo <- ideal(object = sen90,
+                 store.item = FALSE,
+                 verbose = FALSE
+                 )
+  }
 
 ################################################################################
