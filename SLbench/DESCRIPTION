@@ -12,7 +12,8 @@ Description: This package is a collection of functions that were used
              which encompass matrix operations, random number generation, 
              and maximum likelihood estimation.
 License: >= GPL-2
+URL: http://www.rochester.edu/college/gradstudents/jolmsted/computing/SLbench/
 LazyLoad: no
 Depends: R (>= 2.9.2), wnominate (>= 0.94), pscl (>= 0.59), SuppDists (>= 1.1.8),
-         MASS (>=7.3-14), games (>= 1.0-2)
+         MASS (>= 7.3.14), games (>= 1.0.2)
 	 
