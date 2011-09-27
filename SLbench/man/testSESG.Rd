@@ -1,8 +1,9 @@
 \name{testSESG}
+
 \alias{testSESG}
 
 \title{
-Execute statistical estimation of strategic game for time.
+Execute statistical estimation of strategic game for timing.
 }
 
 \description{ This function uses maximum likelihood to estimate the
@@ -14,9 +15,8 @@ testSESG()
 }
 
 
-\details{ In this case, the Signorino and Kenkel \code{egame12} is used
-  from \code{\link{games}} along with a standard dataset.
-}
+\details{ In this case, the Signorino and Kenkel \code{egame12()} is
+  used from the \code{games} package along with a standard dataset.  }
 
 \value{
 }
@@ -29,10 +29,12 @@ testSESG()
 J. P. Olmsted <jpolmsted@gmail.com>
 }
 
-\note{This evaluates in 37 seconds on an HP laptop from circa 2007.}
+\note{This evaluates in about a half minute on an HP laptop (2 x 2.0GHz) from 2007
+  using the Netlib Reference BLAS.
+}
 
 \seealso{
-\code{\link{egame12}}, \code{\link{games-package}}
+\code{\link{egame12}}
 }
 
 \examples{

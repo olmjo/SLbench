@@ -1,9 +1,8 @@
 \name{testIPE2}
+
 \alias{testIPE2}
 
-\title{
-Execute ideal point estimation for timing.
-}
+\title{Execute ideal point estimation for timing.}
 
 \description{This function runs ideal point estimation on a standard set
 of US Senate votes. Its purpose is to fill space with a realistic
@@ -14,8 +13,8 @@ testIPE2()
 }
 
 
-\details{ In this case, a single dimensional IRT model (\code{ideal}) is
-estimated from \code{\link{pscl}}. An alternative approach to ideal
+\details{In this case, a single dimensional IRT model (via \code{ideal}) is
+estimated with the package \code{pscl}. An alternative approach to ideal
 point estimation is considered in \code{\link{testIPE1}}. The analysis
 is performed on a standard set of data with all of the defaults to the
 function intact.}
@@ -30,12 +29,13 @@ function intact.}
 J. P. Olmsted <jpolmsted@gmail.com>
 }
 
-\note{ It takes about 3 minutes on an HP laptop circa 2007.  }
+\note{ It takes about 4 minutes on an HP laptop (2 x 2.0 GHz) from 2007
+using the Netlib Reference BLAS.}
 
 \section{Warning}{Evaluation can take a few minutes!}
 
 \seealso{
-  \code{\link{ideal}}, \code{\link{pscl-package}}, \code{\link{testIPE1}} 
+  \code{\link{ideal}}, \code{\link{testIPE1}} 
 }
 
 \examples{
