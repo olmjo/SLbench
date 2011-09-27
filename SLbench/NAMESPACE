@@ -2,7 +2,8 @@ import(wnominate,
        pscl,
        SuppDists,
        MASS,
-       games
+       games,
+       Matrix
        )
 
 export(testIPE1,
