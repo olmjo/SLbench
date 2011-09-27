@@ -7,7 +7,7 @@
 ###
 ### LICENSE: See Below and Package Details
 ###
-### DESCRIPTION: This R script provides the function standardrun()
+### DESCRIPTION: This R script provides the function testStandard()
 ### whose code is simply a standard benchmarking script released by
 ### Simon Urbanek. The code is not changed at all and included in its
 ### entirety. It was downloaded from
@@ -49,8 +49,8 @@ testStandard <- function()
     
     runs <- 3			# Number of times the tests are executed
     times <- rep(0, 15); dim(times) <- c(5,3)
-    require(Matrix)		# Optimized matrix operations
-    require(SuppDists)	# Optimized random number generators
+    ## require(Matrix)		# Optimized matrix operations
+    ## require(SuppDists)	# Optimized random number generators
     Runif <- rMWC1019	# The fast uniform number generator
 					# If you don't have SuppDists, you can use: Runif <- runif
     a <- rMWC1019(10, new.start=TRUE, seed=492166)	# Init. the generator
