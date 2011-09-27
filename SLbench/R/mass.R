@@ -3,44 +3,47 @@
 ###
 ### AUTHOR: J. P. Olmsted --- jpolmsted@NOSPAM.gmail.com
 ###
-### DATE: Fri Sep 23 17:18:22 2011
+### DATE: Tue Sep 27 10:37:00 2011
 ###
-### LICENSE: See R Package Details
+### LICENSE: See Package Details
 ###
-### DESCRIPTION: This R script file provides the testMASS() function
-### which uses example code without modification from the "MASS" R
-### package. It implements a *wide* variety of statistical methods.
+### DESCRIPTION: This R script provides the function testMASS() whose
+### code is simply a version of the benchmarking script based on the
+### "MASS" package. It was downloaded from
+### http://r.research.att.com/benchmarks/MASS-ex.R on
+### 27-SEP-2011. Some portions of the code were ommitted because they
+### did not seem to work any more.
 ################################################################################
 
+
 testMASS <- function(){
-  library(MASS)
   set.seed(1)
-  
+
   ## Name: Insurance
   ## Title: Numbers of Car Insurance claims
   ## Aliases: Insurance
   ## Keywords: datasets
-  
+
   ## ** Examples
-  
+
   ## main-effects fit as Poisson GLM with offset
-  
+
   glm(Claims ~ District + Group + Age + offset(log(Holders)),
       data = Insurance, family = poisson)
-  
+
                                         # same via loglm
   loglm(Claims ~ District + Group + Age + offset(log(Holders)),
         data = Insurance)
-  
-  
-  
+
+
+
   ## Name: Null
   ## Title: Null Spaces of Matrices
   ## Aliases: Null
   ## Keywords: algebra
-  
+
   ## ** Examples
-  
+
                                         # The function is currently defined as
   function(M)
     {
@@ -48,8 +51,8 @@ testMASS <- function(){
       set <- if(tmp$rank == 0) 1:ncol(M) else  - (1:tmp$rank)
       qr.Q(tmp, complete = TRUE)[, set, drop = FALSE]
     }
-  
-  
+
+
 
   ## Name: OME
   ## Title: Tests of Auditory Perception in Children with OME
@@ -81,26 +84,29 @@ testMASS <- function(){
   rm(aa, ab, ac)
   OMEi <- OME
 
-  library(nlme)
-  fp2 <- deriv(~ 0.5 + 0.5/(1 + exp(-(x-L75)/2)),
-               "L75", function(x,L75) NULL)
-  dec <- getOption("OutDec")
-  options(show.error.messages = FALSE, OutDec=".")
-  OMEi.nls <- nlsList(Correct/Trials ~ fp2(Loud, L75) | UIDn,
-                      data = OMEi, start = list(L75=45), control = list(maxiter=100))
-  options(show.error.messages = TRUE, OutDec=dec)
-  tmp <- sapply(OMEi.nls, function(X)
-                {if(is.null(X)) NA else as.vector(coef(X))})
-  OMEif <- data.frame(UID = round(as.numeric((names(tmp)))),
-                      Noise = rep(c("coherent", "incoherent"), 110),
-                      L75 = as.vector(tmp), stringsAsFactors = TRUE)
-  OMEif$Age <- OME$Age[match(OMEif$UID, OME$UID)]
-  OMEif$OME <- OME$OME[match(OMEif$UID, OME$UID)]
-  OMEif <- OMEif[OMEif$L75 > 30,]
-  summary(lm(L75 ~ Noise/Age, data = OMEif, na.action = na.omit))
-  summary(lm(L75 ~ Noise/(Age + OME), data = OMEif,
-             subset = (Age >= 30 & Age <= 60),
-             na.action = na.omit), cor = FALSE)
+
+  ## EXCLUDED FROM SLbench.
+
+  ## library(nlme)
+  ## fp2 <- deriv(~ 0.5 + 0.5/(1 + exp(-(x-L75)/2)),
+  ##              "L75", function(x,L75) NULL)
+  ## dec <- getOption("OutDec")
+  ## options(show.error.messages = FALSE, OutDec=".")
+  ## OMEi.nls <- nlsList(Correct/Trials ~ fp2(Loud, L75) | UIDn,
+  ##                     data = OMEi, start = list(L75=45), control = list(maxiter=100))
+  ## options(show.error.messages = TRUE, OutDec=dec)
+  ## tmp <- sapply(OMEi.nls, function(X)
+  ##               {if(is.null(X)) NA else as.vector(coef(X))})
+  ## OMEif <- data.frame(UID = round(as.numeric((names(tmp)))),
+  ##                     Noise = rep(c("coherent", "incoherent"), 110),
+  ##                     L75 = as.vector(tmp), stringsAsFactors = TRUE)
+  ## OMEif$Age <- OME$Age[match(OMEif$UID, OME$UID)]
+  ## OMEif$OME <- OME$OME[match(OMEif$UID, OME$UID)]
+  ## OMEif <- OMEif[OMEif$L75 > 30,]
+  ## summary(lm(L75 ~ Noise/Age, data = OMEif, na.action = na.omit))
+  ## summary(lm(L75 ~ Noise/(Age + OME), data = OMEif,
+  ##            subset = (Age >= 30 & Age <= 60),
+  ##            na.action = na.omit), cor = FALSE)
 
                                         # Or fit by weighted least squares
   fpl75 <- deriv(~ sqrt(n)*(r/n - 0.5 - 0.5/(1 + exp(-(x-L75)/scal))),
@@ -138,24 +144,24 @@ testMASS <- function(){
   OMEf <- OMEf[, -match(c("Correct", "Trials"), names(OMEf))]
   detach("OME")
 
-  ## Not run: ## this fails in R on some platforms
-  ##D fp2 <- deriv(~ 0.5 + 0.5/(1 + exp(-(x-L75)/exp(lsc))),
-  ##D              c("L75", "lsc"),
-  ##D              function(x, L75, lsc) NULL)
-  ##D G1.nlme <- nlme(Resp ~ fp2(Loud, L75, lsc),
-  ##D      fixed = list(L75 ~ Age, lsc ~ 1),
-  ##D      random = L75 + lsc ~ 1 | UID,
-  ##D      data = OMEf[OMEf$Noise == "coherent",], method = "ML",
-  ##D      start = list(fixed=c(L75=c(48.7, -0.03), lsc=0.24)), verbose = TRUE)
-  ##D summary(G1.nlme)
-  ##D
-  ##D G2.nlme <- nlme(Resp ~ fp2(Loud, L75, lsc),
-  ##D      fixed = list(L75 ~ Age, lsc ~ 1),
-  ##D      random = L75 + lsc ~ 1 | UID,
-  ##D      data = OMEf[OMEf$Noise == "incoherent",], method="ML",
-  ##D      start = list(fixed=c(L75=c(41.5, -0.1), lsc=0)), verbose = TRUE)
-  ##D summary(G2.nlme)
-  ## End(Not run)
+  ## ## Not run: ## this fails in R on some platforms
+  ## ##D fp2 <- deriv(~ 0.5 + 0.5/(1 + exp(-(x-L75)/exp(lsc))),
+  ## ##D              c("L75", "lsc"),
+  ## ##D              function(x, L75, lsc) NULL)
+  ## ##D G1.nlme <- nlme(Resp ~ fp2(Loud, L75, lsc),
+  ## ##D      fixed = list(L75 ~ Age, lsc ~ 1),
+  ## ##D      random = L75 + lsc ~ 1 | UID,
+  ## ##D      data = OMEf[OMEf$Noise == "coherent",], method = "ML",
+  ## ##D      start = list(fixed=c(L75=c(48.7, -0.03), lsc=0.24)), verbose = TRUE)
+  ## ##D summary(G1.nlme)
+  ## ##D
+  ## ##D G2.nlme <- nlme(Resp ~ fp2(Loud, L75, lsc),
+  ## ##D      fixed = list(L75 ~ Age, lsc ~ 1),
+  ## ##D      random = L75 + lsc ~ 1 | UID,
+  ## ##D      data = OMEf[OMEf$Noise == "incoherent",], method="ML",
+  ## ##D      start = list(fixed=c(L75=c(41.5, -0.1), lsc=0)), verbose = TRUE)
+  ## ##D summary(G2.nlme)
+  ## ## End(Not run)
 
 
   ## Name: Skye
@@ -207,7 +213,7 @@ testMASS <- function(){
   ## Keywords: models
 
   ## ** Examples
-  
+
   quine.hi <- aov(log(Days + 2.5) ~ .^4, quine)
   quine.lo <- aov(log(Days+2.5) ~ 1, quine)
   addterm(quine.lo, quine.hi, test="F")
@@ -243,7 +249,7 @@ testMASS <- function(){
   ## Keywords: nonlinear
 
   ## ** Examples
-  
+
   area(sin, 0, pi)  # integrate the sin function from 0 to pi.
 
 
@@ -1315,26 +1321,28 @@ testMASS <- function(){
 
 
 
-  ## Name: nlschools
-  ## Title: Eighth-Grade Pupils in the Netherlands
-  ## Aliases: nlschools
-  ## Keywords: datasets
+  ## EXCLUDED FOR "SLbench"
 
-  ## ** Examples
+  ## ## Name: nlschools
+  ## ## Title: Eighth-Grade Pupils in the Netherlands
+  ## ## Aliases: nlschools
+  ## ## Keywords: datasets
 
-  library(nlme)
-  nl1 <- nlschools
-  attach(nl1)
-  classMeans <- tapply(IQ, class, mean)
-  nl1$IQave <- classMeans[as.character(class)]
-  nl1$IQ <- nl1$IQ - nl1$IQave
-  detach()
-  cen <- c("IQ", "IQave", "SES")
-  nl1[cen] <- scale(nl1[cen], center = TRUE, scale = FALSE)
+  ## ## ** Examples
 
-  nl.lme <- lme(lang ~ IQ*COMB + IQave + SES,
-                random = ~ IQ | class, data = nl1)
-  summary(nl.lme)
+  ## library(nlme)
+  ## nl1 <- nlschools
+  ## attach(nl1)
+  ## classMeans <- tapply(IQ, class, mean)
+  ## nl1$IQave <- classMeans[as.character(class)]
+  ## nl1$IQ <- nl1$IQ - nl1$IQave
+  ## detach()
+  ## cen <- c("IQ", "IQave", "SES")
+  ## nl1[cen] <- scale(nl1[cen], center = TRUE, scale = FALSE)
+
+  ## nl.lme <- lme(lang ~ IQ*COMB + IQave + SES,
+  ##               random = ~ IQ | class, data = nl1)
+  ## summary(nl.lme)
 
 
 
