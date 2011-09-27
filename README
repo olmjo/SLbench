@@ -1,0 +1,17 @@
+=== SLbench R Package === 
+
+This text file contains a very brief description of the contents of
+the sole subdirectory.
+
+Contact: Jonathan Olmsted <jpolmsted@gmail.com>
+
+=========================
+
+*SLbench 
+
+         Directory containing the source code for R package 'SLbench'
+         which was created to facilitate benchmarking the performance
+         effects in R of software and hardware changes.
+
+=========================
+
