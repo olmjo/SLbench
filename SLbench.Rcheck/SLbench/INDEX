@@ -1,9 +1,0 @@
-SLbench                 Collection of Useful Operations for
-                        Benchmarking the Starlab
-dfAgency                David Lewis' Agency Creation Dataset
-testIPE                 Test Ideal Point Estimation Speed
-testMatrix              Test Matrix Operation Speeds
-testOptim               Test Optimization Speeds
-testRNG                 Test Random Number Generation
-testRW                  Test Read-Write Speeds
-testStandard            Test Standard Benchmarking Script Speeds
