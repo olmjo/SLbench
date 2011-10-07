@@ -15,7 +15,7 @@ testSESG()
 }
 
 
-\details{ In this case, the Signorino and Kenkel \code{egame12()} is
+\details{ In this case, the Signorino and Kenkel \link{\code{egame12()}} is
   used from the \code{games} package along with a standard dataset.  }
 
 \value{
